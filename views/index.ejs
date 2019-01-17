@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Greeter</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="/stylesheets/style.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <a id="ribbon" href="https://github.com/MediaComem/comem-archidep-js-automated-tests">
+      <img src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub">
+    </a>
+
+    <header>
+      <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container d-flex justify-content-between">
+          <a href="#" class="navbar-brand d-flex align-items-center">
+            <strong>Greeter</strong>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main role="main">
+
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading mb-5">{{ greeting }}</h1>
+          <form class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4" @submit='fetchGreeting'>
+            <div class="form-group">
+              <label for="greetingSalutation">Salutation</label>
+              <select class="form-control" id="greetingSalutation" name="salutation" v-model="greetingSalutation">
+                <option value="Hello">Standard</option>
+                <option value="Greetings">Formal</option>
+                <option value="Ahoy">Pirate</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="greetingExcitement">Excitement</label>
+              <input type="number" class="form-control" id="greetingExcitement" name="excitement" value="0" min="0" v-model="greetingExcitement">
+            </div>
+            <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="greetingRandom" name="random" v-model="greetingRandom">
+              <label class="form-check-label" for="greetingRandom">Random name</label>
+            </div>
+            <div class="form-group" v-if='!greetingRandom'>
+              <input type="text" class="form-control" id="greetingName" name="name" placeholder="Enter your name" v-model="greetingName" :disabled='greetingRandom'>
+            </div>
+            <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="greetingLoud" name="loud" v-model="greetingLoud">
+              <label class="form-check-label" for="greetingLoud">Loud</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary" v-if='greetingRandom' :disabled='fetching'>Next</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js" integrity="sha256-7/yoZS3548fXSRXqc/xYzjsmuW3sFKzuvOCHd06Pmps=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.min.js" integrity="sha256-628YJ33SSNGwa+a/S3mx27+nZrFkawJZt/CC/REfBPk=" crossorigin="anonymous"></script>
+    <script src='/javascripts/app.js'></script>
+  </body>
+</html>
